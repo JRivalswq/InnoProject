@@ -26,9 +26,5 @@ Route::patch('/admin/{post}', [PanelController::class, 'update'])->name('admin.u
 
 Route::delete('/admin/{post}', [PanelController::class, 'destroy'])->name('admin.delete');
 
-
-
-
-
 Auth::routes();
 
