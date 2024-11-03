@@ -22,11 +22,13 @@
             <ul class="main_catalogue">
                 @foreach($products as $product)
                 <li class="main_catalogue_card">
-                    <img alt="product_image" src="{{ asset('/img/' . $product->image )}}">
-                    <div class="main_catalogue_card_bot">
-                        <span>{{ $product->name }}</span>
-                        <span>{{ $product->price }} BYN</span>
-                    </div>
+                    <a href="{{ route('catalogue.show', $product->id) }}">
+                        <img alt="product_image" src="{{ asset('/img/' . $product->image )}}">
+                        <div class="main_catalogue_card_bot">
+                            <span>{{ $product->name }}</span>
+                            <span>{{ $product->price }} BYN</span>
+                        </div>
+                    </a>
                 </li>
                 @endforeach
             </ul>

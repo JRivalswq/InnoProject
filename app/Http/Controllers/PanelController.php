@@ -34,7 +34,7 @@ class PanelController extends Controller
             'image' => 'string'
         ]);
 
-        Product::created($data);
+        $product = Product::create($data);
         return redirect()->route('admin.index');
     }
 
@@ -55,7 +55,7 @@ class PanelController extends Controller
 
     public function update(string $id)
     {
-        $products = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $data = request()->validate([
             'name' => 'string',
             'description' => 'string',
@@ -65,8 +65,8 @@ class PanelController extends Controller
             'image' => 'string'
         ]);
 
-        Product::updated($data);
-        return redirect()->route('admin.show', $products->id);
+        $product->update($data);
+        return redirect()->route('admin.show', $product->id);
     }
 
 

@@ -18,14 +18,22 @@
     </div>
 </header>
 <main>
-    <div>
-    <div>
-        <a href="{{route('admin.create')}}">Add</a>
-    </div>
-    @foreach($products as $product)
-        <a href="{{ route('admin.show', $product->id) }}"><div>{{ $product->name }}</div></a>
-    @endforeach
-    </div>
+    <section class="admin_section">
+        <div class="admin_wrap">
+        @foreach($products as $product)
+            <div class="admin_item_wrap">
+                <span>
+                    <a href="{{ route('admin.show', $product->id) }}" class="admin_item_link">
+                        {{ $product->name }} {{$product->release_date}} {{ $product->price }}
+                    </a>
+                </span>
+            </div>
+            @endforeach
+        </div>
+        <div>
+            <a href="{{route('admin.create')}}" class="btn">Add</a>
+        </div>
+    </section>
 </main>
 </body>
 </html>

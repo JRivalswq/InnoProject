@@ -38,8 +38,8 @@ ol[class] {
     list-style: none;
 }
 
-a:not([class]) {
-    text-decoration-skip-ink: auto;
+a{
+    color: black;
 }
 
 img {
@@ -104,3 +104,34 @@ header{
     margin: 10px 0 25px 0;
 }
 
+.admin_section{
+    padding: 20px;
+}
+
+.admin_wrap{
+    margin-bottom: 20px;
+}
+
+.admin_item_wrap{
+
+}
+
+.admin_item_link{
+
+}
+
+.admin_show_btns{
+    display: flex;
+    gap: 10px;
+}
+
+.btn{
+    padding: 8px 15px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+}
