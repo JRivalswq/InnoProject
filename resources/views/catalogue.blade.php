@@ -13,7 +13,9 @@
         <div class="header-wrapper">
             <div class="header_wrapper_logo"></div>
             <div class="header_wrapper_button">
-                <a href="/admin">Adminer</a>
+                <div class="header_wrapper_button">
+                    <a href="{{ route('admin.index') }}">Adminer</a>
+                </div>
             </div>
         </div>
     </header>

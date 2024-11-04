@@ -24,7 +24,7 @@
             <div class="admin_item_wrap">
                 <span>
                     <a href="{{ route('admin.show', $product->id) }}" class="admin_item_link">
-                        {{ $product->name }} {{$product->release_date}} {{ $product->price }}
+                        {{$product->id}} {{ $product->name }} {{$product->release_date}} {{ $product->price }}
                     </a>
                 </span>
             </div>

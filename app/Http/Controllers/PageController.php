@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Services;
+use App\Http\Controllers\ServicesController;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function show():mixed{
-        $products = Product::showAll();
+    public function show()
+    {
+        $products = Product::all();
         return view('catalogue', ['products' => $products]);
     }
 
-    public function showId(string $id){
+    public function showId(string $id)
+    {
         $product = Product::find($id);
-        $services = Services::all();
-        return view('product', ['product' => $product, 'services' => $services]);
-    }
 
+        if (!$product) {
+            abort(404, 'Product not found');
+        }
+
+        $servicesController = new ServicesController();
+        $services = $servicesController->index();
+
+        return view('product', [
+            'product' => $product,
+            'services' => $services,
+        ]);
+    }
 }
