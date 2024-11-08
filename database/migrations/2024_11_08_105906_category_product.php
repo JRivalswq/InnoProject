@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('last_name')->nullable();
-            $table->boolean('is_admin')->default(0);
+        Schema::create('category_product', function (Blueprint $table) {
+            $table->id();
+            $table->integer('category_id');
+            $table->string('product_id');
         });
     }
 
@@ -22,9 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('last_name');
-            $table->dropColumn('is_admin');
-        });
+        Schema::dropIfExists('category_product');
     }
 };

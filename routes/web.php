@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleAuthController;
 
 Route::view('/', 'catalogue');
 Route::view('/admin/create', 'admin/create');
@@ -20,6 +21,9 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/admin/{post}', [PanelController::class, 'update'])->name('admin.update');
     Route::delete('/admin/{post}', [PanelController::class, 'destroy'])->name('admin.delete');
 });
+
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('auth.google');
+Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
 Route::get('/login', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.auth');
 

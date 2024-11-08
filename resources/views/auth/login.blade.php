@@ -70,4 +70,9 @@
         </div>
     </div>
 </div>
+    <div>
+        <a href="{{ route('auth.google') }}">
+            Google
+        </a>
+    </div>
 @endsection
