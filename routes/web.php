@@ -6,6 +6,7 @@ use App\Http\Controllers\PanelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\CurrencyController;
 
 Route::view('/', 'catalogue');
 Route::view('/admin/create', 'admin/create');
@@ -22,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/{post}', [PanelController::class, 'destroy'])->name('admin.delete');
 });
 
+
+
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('auth.google');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
@@ -29,6 +32,10 @@ Route::get('/login', [App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::get('/', [PageController::class, 'show']);
 Route::get('/product/{id}', [PageController::class, 'showId'])->name('catalogue.show');
+
+Route::post('/set-currency', [CurrencyController::class, 'setCurrency'])->name('currency.set');
+
+
 
 Auth::routes();
 

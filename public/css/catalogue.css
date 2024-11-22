@@ -61,7 +61,7 @@ button,
 textarea,
 select {
     font: inherit;
-}
+    }
 
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -89,6 +89,11 @@ section{
     padding: 20px 40px 20px 40px;
 }
 
+.header_wrapper_logo ul{
+    display: flex;
+    gap: 40px;
+}
+
 .header_wrapper_button{
 
 }
@@ -97,6 +102,11 @@ section{
     color: white;
     font-size: 18px;
     text-decoration: none;
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .main_catalogue{
@@ -146,6 +156,11 @@ section{
 
 .product_info_wrap{
     margin-top: 100px;
+}
+
+.product_info_price{
+    display: flex;
+    flex-direction: column;
 }
 
 

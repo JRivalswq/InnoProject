@@ -34,6 +34,9 @@
                 </li>
                 @endforeach
             </ul>
+            <div>
+                {{ $products->links() }}
+            </div>
         </section>
     </main>
 </body>

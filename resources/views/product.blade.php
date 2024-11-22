@@ -9,7 +9,26 @@
 <body>
 <header>
     <div class="header-wrapper">
-        <div class="header_wrapper_logo"></div>
+        <div class="header_wrapper_logo">
+            <ul>
+                <li>
+                    <a href="{{ route('catalogue.show', ['id' => $product->id, 'currency' => 'BYN']) }}"
+                       class="{{ $selectedCurrency == 'BYN' ? 'active' : '' }}">BYN</a>
+                </li>
+                <li>
+                    <a href="{{ route('catalogue.show', ['id' => $product->id, 'currency' => 'USD']) }}"
+                       class="{{ $selectedCurrency == 'USD' ? 'active' : '' }}">USD</a>
+                </li>
+                <li>
+                    <a href="{{ route('catalogue.show', ['id' => $product->id, 'currency' => 'EUR']) }}"
+                       class="{{ $selectedCurrency == 'EUR' ? 'active' : '' }}">EUR</a>
+                </li>
+                <li>
+                    <a href="{{ route('catalogue.show', ['id' => $product->id, 'currency' => 'RUB']) }}"
+                       class="{{ $selectedCurrency == 'RUB' ? 'active' : '' }}">RUB</a>
+                </li>
+            </ul>
+        </div>
         <div class="header_wrapper_button">
             <a href="/admin">Adminer</a>
         </div>
@@ -27,14 +46,19 @@
                 <p>Выберите услуги:</p>
                 @foreach($services as $service)
                     <div class="service-option">
-                        <input type="checkbox" id="service-{{ $service->id }}" name="services[]" value="{{ $service->price }}" onchange="updatePrice(this.value, this.checked)">
-                        <label for="service-{{ $service->id }}">{{ $service->name }} ({{ $service->price }} BYN)</label>
+                        <input type="checkbox" id="service-{{ $service->id }}" name="services[]" value="{{ $service->converted_price }}" onchange="updatePrice(this.value, this.checked)">
+                        <label for="service-{{ $service->id }}">
+                            {{ $service->name }} ({{ number_format($service->converted_price, 2, '.', ',') }} {{ $selectedCurrency }})
+                        </label>
                     </div>
                 @endforeach
 
+
                 <span>{{ $product->description }}</span>
                 <div class="product_info_price">
-                    <strong>Цена: <span id="product-price" data-base-price="{{ $product->price }}">{{ $product->price }}</span> BYN</strong>
+                    <strong>Цена:
+                        <span id="product-price">{{ number_format($convertedPrice, 2, '.', ',') }} {{ $selectedCurrency }}</span>
+                    </strong>
                 </div>
             </div>
         </div>
